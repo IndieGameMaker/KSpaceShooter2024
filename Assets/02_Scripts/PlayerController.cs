@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
         v = Input.GetAxis("Vertical"); // -1.0f ~ 0.0f ~ +1.0f
         h = Input.GetAxis("Horizontal"); // -1.0f ~ 0.0f ~ +1.0f
 
-        transform.position += new Vector3(0, 0, 0.01f);
-        // transform.position = transform.position + new Vector3(0, 0, 0.01f);
+        transform.Translate(Vector3.forward * 0.01f * v);
+
+        //transform.position += new Vector3(0, 0, 0.01f) * v;
+        //transform.position += Vector3.forward * 0.01f * v;
+        // transform.(position) = transform.position + new Vector3(0, 0, 0.01f);
     }
 }
