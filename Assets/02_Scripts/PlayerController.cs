@@ -30,8 +30,13 @@ public class PlayerController : MonoBehaviour
         h = Input.GetAxis("Horizontal"); // -1.0f ~ 0.0f ~ +1.0f
         r = Input.GetAxis("Mouse X"); // - / +
 
-        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * v);
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * h);
+        // 이동방향을 계산 : 벡터의 덧셈 연산
+        Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
+        transform.Translate(moveDir * moveSpeed * Time.deltaTime);
+
+
+        // transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * v);
+        // transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * h);
 
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * r);
 
