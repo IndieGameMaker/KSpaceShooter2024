@@ -31,3 +31,4 @@ public class RemoveBullet : MonoBehaviour
      2. 이동하는 객체에는 반드시 Rigidbody 컴포넌트가 있어야 함
 
 */
+
