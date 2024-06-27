@@ -32,7 +32,10 @@ public class PlayerController : MonoBehaviour
 
         // 이동방향을 계산 : 벡터의 덧셈 연산
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
-        transform.Translate(moveDir * moveSpeed * Time.deltaTime);
+        transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
+
+        Debug.Log("moveDir=" + moveDir.magnitude);// 벡터의 길이
+        Debug.Log("moveDir.normalized= " + moveDir.normalized.magnitude); // 크기를 1로 변경한 벡터의 길이
 
 
         // transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * v);
