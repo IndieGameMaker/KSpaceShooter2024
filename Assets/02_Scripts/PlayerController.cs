@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
         r = Input.GetAxis("Mouse X"); // - / +
 
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * v);
+        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * h);
+
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * r);
 
         //transform.position += new Vector3(0, 0, 0.01f) * v;
