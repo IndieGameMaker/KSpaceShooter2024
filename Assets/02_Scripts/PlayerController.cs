@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = this.gameObject.GetComponent<Animator>();
+
+        Debug.Log(hashForward);
     }
 
     void Update()
