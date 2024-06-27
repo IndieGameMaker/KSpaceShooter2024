@@ -4,7 +4,11 @@ public class RemoveBullet : MonoBehaviour
 {
     void OnCollisionEnter(Collision coll)
     {
-        Debug.Log(coll.gameObject.name);
+        //if (coll.collider.tag == "BULLET")
+        if (coll.collider.CompareTag("BULLET")) // GC 발생하지 않음.
+        {
+            Destroy(coll.gameObject);
+        }
     }
 }
 
