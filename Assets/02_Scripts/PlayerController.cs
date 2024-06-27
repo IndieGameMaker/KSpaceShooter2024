@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
 
+    // Animator의 Parameter Hash 값을 추출
+    private int hashForward = Animator.StringToHash("forward");
+    private int hashStrafe = Animator.StringToHash("strafe");
+
     void Start()
     {
         animator = this.gameObject.GetComponent<Animator>();
@@ -39,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAnim()
     {
-        animator.SetFloat("forward", v);
-        animator.SetFloat("strafe", h);
+        animator.SetFloat(hashForward, v);
+        animator.SetFloat(hashStrafe, h);
     }
 
     private void MoveAndRotate()
