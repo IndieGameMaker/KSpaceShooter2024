@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
         h = Input.GetAxis("Horizontal"); // -1.0f ~ 0.0f ~ +1.0f
         r = Input.GetAxis("Mouse X"); // - / +
 
-        transform.Translate(Vector3.forward * 0.01f * v);
-        transform.Rotate(Vector3.up * 100.0f * r);
+        transform.Translate(Vector3.forward * Time.deltaTime * 6.0f * v);
+        transform.Rotate(Vector3.up * Time.deltaTime * 100.0f * r);
 
         //transform.position += new Vector3(0, 0, 0.01f) * v;
         //transform.position += Vector3.forward * 0.01f * v;
