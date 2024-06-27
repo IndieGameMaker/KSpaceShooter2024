@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         v = Input.GetAxis("Vertical"); // -1.0f ~ 0.0f ~ +1.0f
         h = Input.GetAxis("Horizontal"); // -1.0f ~ 0.0f ~ +1.0f
+        r = Input.GetAxis("Mouse X"); // - / +
 
         transform.Translate(Vector3.forward * 0.01f * v);
         transform.Rotate(Vector3.up * 100.0f * r);
