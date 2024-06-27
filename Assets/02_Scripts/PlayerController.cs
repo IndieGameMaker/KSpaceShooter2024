@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
     private float h;
     private float r;
 
+    private Animator animator;
+
     void Start()
     {
-        Debug.Log("Hello World!");
+        animator = this.gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour
         r = Input.GetAxis("Mouse X"); // - / +
 
         // 이동방향을 계산 : 벡터의 덧셈 연산
+        // 벡터의 크기를 1로 변환
+        // 벡터의 정규화 , Vector Normalized
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
         transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
 
