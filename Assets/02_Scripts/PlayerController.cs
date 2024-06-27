@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private float v;
     private float h;
+    private float r;
 
     void Start()
     {
@@ -23,9 +24,20 @@ public class PlayerController : MonoBehaviour
         h = Input.GetAxis("Horizontal"); // -1.0f ~ 0.0f ~ +1.0f
 
         transform.Translate(Vector3.forward * 0.01f * v);
+        transform.Rotate(Vector3.up * 100.0f * r);
 
         //transform.position += new Vector3(0, 0, 0.01f) * v;
         //transform.position += Vector3.forward * 0.01f * v;
         // transform.(position) = transform.position + new Vector3(0, 0, 0.01f);
     }
 }
+
+
+/*
+    Vector3.forward = new Vector3(0, 0, 1)
+    Vector3.up      = new Vector3(0, 1, 0)
+    Vector3.right   = new Vector3(1, 0, 0)
+
+    Vector3.one     = new Vector3(1, 1, 1)
+    Vector3.zero    = new Vector3(0, 0, 0)
+*/
