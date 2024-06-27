@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
         2. InputSystem (new)
     */
     [SerializeField]
+    [Range(5, 15)]
     private float moveSpeed = 6.0f;
+
     [SerializeField]
     private float turnSpeed = 200.0f;
 
