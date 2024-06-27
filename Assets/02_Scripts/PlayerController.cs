@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -32,24 +33,24 @@ public class PlayerController : MonoBehaviour
         h = Input.GetAxis("Horizontal"); // -1.0f ~ 0.0f ~ +1.0f
         r = Input.GetAxis("Mouse X"); // - / +
 
+        MoveAndRotate();
+        PlayerAnim();
+    }
+
+    private void PlayerAnim()
+    {
+        animator.SetFloat("forward", v);
+        animator.SetFloat("strafe", h);
+    }
+
+    private void MoveAndRotate()
+    {
         // 이동방향을 계산 : 벡터의 덧셈 연산
         // 벡터의 크기를 1로 변환
         // 벡터의 정규화 , Vector Normalized
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
         transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
-
-        Debug.Log("moveDir=" + moveDir.magnitude);// 벡터의 길이
-        Debug.Log("moveDir.normalized= " + moveDir.normalized.magnitude); // 크기를 1로 변경한 벡터의 길이
-
-
-        // transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * v);
-        // transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * h);
-
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * r);
-
-        //transform.position += new Vector3(0, 0, 0.01f) * v;
-        //transform.position += Vector3.forward * 0.01f * v;
-        // transform.(position) = transform.position + new Vector3(0, 0, 0.01f);
     }
 }
 
