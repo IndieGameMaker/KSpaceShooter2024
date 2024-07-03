@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RemoveBullet : MonoBehaviour
 {
+    [SerializeField] private GameObject sparkEffect;
+
     void OnCollisionEnter(Collision coll)
     {
         //if (coll.collider.tag == "BULLET")
