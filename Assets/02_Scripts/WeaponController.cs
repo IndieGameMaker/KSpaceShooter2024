@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
@@ -15,6 +16,7 @@ public class WeaponController : MonoBehaviour
     {
         audio = GetComponent<AudioSource>();
         muzzleFlash = firePos.GetComponentInChildren<MeshRenderer>();
+        muzzleFlash.enabled = false;
     }
 
     void Update()
@@ -23,7 +25,17 @@ public class WeaponController : MonoBehaviour
         {
             Fire();
             PlaySfx();
+            StartCoroutine(ShowMuzzleFlash());
         }
+    }
+
+    private IEnumerator ShowMuzzleFlash()
+    {
+        muzzleFlash.enabled = true;
+
+        yield return new WaitForSeconds(0.2f);
+
+        muzzleFlash.enabled = false;
     }
 
     private void PlaySfx()
