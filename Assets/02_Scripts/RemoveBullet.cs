@@ -9,6 +9,19 @@ public class RemoveBullet : MonoBehaviour
         //if (coll.collider.tag == "BULLET")
         if (coll.collider.CompareTag("BULLET")) // GC 발생하지 않음.
         {
+            // 충돌 정보 추출
+            ContactPoint cp = coll.GetContact(0);
+            // 충돌 지점
+            Vector3 _point = cp.point;
+            // 충돌 지점의 법선 벡터
+            Vector3 _normal = -cp.normal;
+            // 법선 벡터를 쿼터니언 타입으로 변환
+            Quaternion rot = Quaternion.LookRotation(_normal);
+
+            // 스파크 생성
+            Instantiate(sparkEffect, _point, rot);
+
+
             Destroy(coll.gameObject);
         }
     }
