@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
@@ -17,8 +18,19 @@ public class WeaponController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // 총알을 동적으로 생성
-            Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+            Fire();
+            PlaySfx();
         }
+    }
+
+    private void PlaySfx()
+    {
+        audio.PlayOneShot(fireSfx, 0.8f);
+    }
+
+    private void Fire()
+    {
+        // 총알을 동적으로 생성
+        Instantiate(bulletPrefab, firePos.position, firePos.rotation);
     }
 }

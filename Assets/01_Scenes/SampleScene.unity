@@ -808,6 +808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePos: {fileID: 677504648}
   bulletPrefab: {fileID: 3449247491072483243, guid: b9fa9f134425740fa8c490737ecd5c79, type: 3}
+  fireSfx: {fileID: 8300000, guid: 641ff25f5da444ddf8874d961a56f0c9, type: 3}
 --- !u!82 &751305456
 AudioSource:
   m_ObjectHideFlags: 0
