@@ -11,7 +11,6 @@ public class Barrel : MonoBehaviour
     // ScriptableObject 연결
     [SerializeField] private BarrelDataSO barrelDataSO;
 
-
     private int hitCount;
     private new MeshRenderer renderer;
     private new AudioSource audio;
@@ -21,8 +20,8 @@ public class Barrel : MonoBehaviour
         renderer = GetComponentInChildren<MeshRenderer>();
         audio = GetComponent<AudioSource>();
 
-        int idx = UnityEngine.Random.Range(0, textures.Length); // 0, 1, 2
-        renderer.material.mainTexture = textures[idx];
+        int idx = UnityEngine.Random.Range(0, barrelDataSO.textures.Length); // 0, 1, 2
+        renderer.material.mainTexture = barrelDataSO.textures[idx];
     }
 
     void OnCollisionEnter(Collision coll)
@@ -45,10 +44,10 @@ public class Barrel : MonoBehaviour
         rb.AddExplosionForce(1500.0f, transform.position + impactPoint, 5.0f, 1800.0f);
 
         Destroy(this.gameObject, 2.5f);
-        var obj = Instantiate(expEffect, transform.position, Quaternion.identity);
+        var obj = Instantiate(barrelDataSO.effectPrefab, transform.position, Quaternion.identity);
         Destroy(obj, 5.0f);
 
         // Play Explosion SFX
-        audio.PlayOneShot(expSfx, 0.9f);
+        audio.PlayOneShot(barrelDataSO.expAudioClip, 0.9f);
     }
 }
