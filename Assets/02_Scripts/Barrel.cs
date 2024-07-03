@@ -8,6 +8,10 @@ public class Barrel : MonoBehaviour
     // [SerializeField] private Texture[] textures;
     // [SerializeField] private AudioClip expSfx;
 
+    // ScriptableObject 연결
+    [SerializeField] private BarrelDataSO barrelDataSO;
+
+
     private int hitCount;
     private new MeshRenderer renderer;
     private new AudioSource audio;
