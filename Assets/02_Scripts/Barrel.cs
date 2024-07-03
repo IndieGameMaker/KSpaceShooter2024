@@ -43,5 +43,8 @@ public class Barrel : MonoBehaviour
         Destroy(this.gameObject, 2.5f);
         var obj = Instantiate(expEffect, transform.position, Quaternion.identity);
         Destroy(obj, 5.0f);
+
+        // Play Explosion SFX
+        audio.PlayOneShot(expSfx, 0.9f);
     }
 }
