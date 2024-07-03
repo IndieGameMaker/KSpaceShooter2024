@@ -1,6 +1,7 @@
-using System;
 using System.Collections;
+using Unity.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WeaponController : MonoBehaviour
 {
@@ -31,6 +32,15 @@ public class WeaponController : MonoBehaviour
 
     private IEnumerator ShowMuzzleFlash()
     {
+        // Texture Offset 변경
+        // Random.Range(min, max)
+        // 정수 Random.Range(0, 10);   0,1,2,3,...,9
+        // 실수 Random.Range(0.0f, 10.0f);   0.0f ~ 10.0f
+        // (0, 0), (0.5, 0), (0, 0.5), (0.5, 0.5)
+        // Random.Range(0, 2) => (0, 1) * 0.5 => (0, 0.5)
+        Vector2 offset = new Vector2(Random.Range(0, 2), Random.Range(0, 2)) * 0.5f;
+
+
         muzzleFlash.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
