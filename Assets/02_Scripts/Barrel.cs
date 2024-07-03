@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
+    [SerializeField] private GameObject expEffect;
     private int hitCount;
 
     void OnCollisionEnter(Collision coll)
@@ -25,5 +26,6 @@ public class Barrel : MonoBehaviour
         rb.AddExplosionForce(1500.0f, transform.position + impactPoint, 5.0f, 1800.0f);
 
         Destroy(this.gameObject, 2.5f);
+        Instantiate(expEffect, transform.position, Quaternion.identity);
     }
 }
