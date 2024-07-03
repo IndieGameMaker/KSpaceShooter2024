@@ -4,9 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Barrel : MonoBehaviour
 {
-    [SerializeField] private GameObject expEffect;
-    [SerializeField] private Texture[] textures;
-    [SerializeField] private AudioClip expSfx;
+    // [SerializeField] private GameObject expEffect;
+    // [SerializeField] private Texture[] textures;
+    // [SerializeField] private AudioClip expSfx;
 
     private int hitCount;
     private new MeshRenderer renderer;
