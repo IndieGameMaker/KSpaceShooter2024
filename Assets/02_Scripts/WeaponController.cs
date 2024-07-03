@@ -6,6 +6,13 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;  // 총알 프리팹
     [SerializeField] private AudioClip fireSfx;  // 총소리 오디오 클립
 
+    private new AudioSource audio;
+
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
