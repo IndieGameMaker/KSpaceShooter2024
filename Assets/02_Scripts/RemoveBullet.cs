@@ -11,6 +11,11 @@ public class RemoveBullet : MonoBehaviour
         {
             // 충돌 정보 추출
             ContactPoint cp = coll.GetContact(0);
+
+            // ContactPoint[] cp = coll.contacts;
+            // cp[0].point;
+            // cp[0].normal;
+
             // 충돌 지점
             Vector3 _point = cp.point;
             // 충돌 지점의 법선 벡터

@@ -7,11 +7,14 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;  // 총알 프리팹
     [SerializeField] private AudioClip fireSfx;  // 총소리 오디오 클립
 
+    [SerializeField] private MeshRenderer muzzleFlash;
+
     private new AudioSource audio;
 
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        muzzleFlash = firePos.GetComponentInChildren<MeshRenderer>();
     }
 
     void Update()
