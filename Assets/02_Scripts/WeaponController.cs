@@ -12,12 +12,17 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private MeshRenderer muzzleFlash;
 
     private new AudioSource audio;
+    private Light fireLight;
 
     void Start()
     {
         audio = GetComponent<AudioSource>();
         muzzleFlash = firePos.GetComponentInChildren<MeshRenderer>();
         muzzleFlash.enabled = false;
+
+        fireLight = firePos.Find("FireLight")?.GetComponent<Light>();
+        fireLight.intensity = 0.0f;
+        //GameObject.Find("검색대상")
     }
 
     void Update()
@@ -50,11 +55,14 @@ public class WeaponController : MonoBehaviour
         float angle = Random.Range(0, 360);
         muzzleFlash.transform.localRotation = Quaternion.Euler(Vector3.forward * angle);
 
+        fireLight.intensity = Random.Range(2.0f, 5.0f);
+
         muzzleFlash.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
 
         muzzleFlash.enabled = false;
+        fireLight.intensity = 0.0f;
     }
 
     private void PlaySfx()
