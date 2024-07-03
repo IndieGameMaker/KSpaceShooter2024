@@ -46,6 +46,10 @@ public class WeaponController : MonoBehaviour
         muzzleFlash.transform.localScale = Vector3.one * scale;
         //new Vector3(scale, scale, scale);
 
+        // Rotate MuzzleFlash
+        float angle = Random.Range(0, 360);
+        muzzleFlash.transform.localRotation = Quaternion.Euler(Vector3.forward * angle);
+
         muzzleFlash.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
