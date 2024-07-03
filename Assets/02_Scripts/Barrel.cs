@@ -1,16 +1,21 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Barrel : MonoBehaviour
 {
     [SerializeField] private GameObject expEffect;
     [SerializeField] private Texture[] textures;
+    [SerializeField] private AudioClip expSfx;
+
     private int hitCount;
     private new MeshRenderer renderer;
+    private new AudioSource audio;
 
     void Start()
     {
         renderer = GetComponentInChildren<MeshRenderer>();
+        audio = GetComponent<AudioSource>();
 
         int idx = UnityEngine.Random.Range(0, textures.Length); // 0, 1, 2
         renderer.material.mainTexture = textures[idx];
