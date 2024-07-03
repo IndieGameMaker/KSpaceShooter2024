@@ -41,7 +41,7 @@ public class Barrel : MonoBehaviour
         Vector3 impactPoint = UnityEngine.Random.insideUnitSphere * 1.5f;
 
         var rb = this.gameObject.AddComponent<Rigidbody>();
-        rb.AddExplosionForce(1500.0f, transform.position + impactPoint, 5.0f, 1800.0f);
+        rb.AddExplosionForce(1500.0f, transform.position + impactPoint, 10.0f, 1800.0f);
 
         Destroy(this.gameObject, 2.5f);
         var obj = Instantiate(barrelDataSO.effectPrefab, transform.position, Quaternion.identity);
