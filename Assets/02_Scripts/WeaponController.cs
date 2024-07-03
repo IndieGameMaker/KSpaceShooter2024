@@ -39,7 +39,7 @@ public class WeaponController : MonoBehaviour
         // (0, 0), (0.5, 0), (0, 0.5), (0.5, 0.5)
         // Random.Range(0, 2) => (0, 1) * 0.5 => (0, 0.5)
         Vector2 offset = new Vector2(Random.Range(0, 2), Random.Range(0, 2)) * 0.5f;
-
+        muzzleFlash.material.mainTextureOffset = offset;
 
         muzzleFlash.enabled = true;
 
