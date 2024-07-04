@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
 
     private bool isStarted = false;
 
+    public int initHp = 100;
+    public int currHp = 100;
+
 
     IEnumerator Start()
     {
@@ -69,10 +72,18 @@ public class PlayerController : MonoBehaviour
     {
         if (coll.CompareTag("PUNCH"))
         {
-            Debug.Log(coll.gameObject.name);
+            currHp -= 10;
+            if (currHp <= 0)
+            {
+                PlayerDie();
+            }
         }
     }
 
+    private void PlayerDie()
+    {
+        Debug.Log("플레이어 사망");
+    }
 }
 
 
