@@ -27,20 +27,22 @@ public class PlayerController : MonoBehaviour
     private int hashForward = Animator.StringToHash("forward");
     private int hashStrafe = Animator.StringToHash("strafe");
 
+    private bool isStarted = false;
+
+
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(0.2f);
-
         animator = this.gameObject.GetComponent<Animator>();
 
-        Debug.Log(hashForward);
+        yield return new WaitForSeconds(0.2f);
+        isStarted = true;
     }
 
     void Update()
     {
         v = Input.GetAxis("Vertical"); // -1.0f ~ 0.0f ~ +1.0f
         h = Input.GetAxis("Horizontal"); // -1.0f ~ 0.0f ~ +1.0f
-        r = Input.GetAxis("Mouse X"); // - / +
+        r = (isStarted == true) ? Input.GetAxis("Mouse X") : 0.0f;
 
         MoveAndRotate();
         PlayerAnim();
