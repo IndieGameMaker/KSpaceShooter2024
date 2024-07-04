@@ -14,10 +14,14 @@ public class MonsterController : MonoBehaviour
     private Transform monsterTr;
     private Transform playerTr;
 
+    private WaitForSeconds ws;
+
     public bool isDie = false;
 
     void Start()
     {
+        ws = new WaitForSeconds(0.3f);
+
         monsterTr = GetComponent<Transform>(); // monsterTr = transform;
         playerTr = GameObject.FindGameObjectWithTag("PLAYER")?.GetComponent<Transform>();
 
@@ -28,6 +32,14 @@ public class MonsterController : MonoBehaviour
 
         StartCoroutine(CheckMonsterState());
         //StartCoroutine("CheckMonsterState");
+    }
+
+    IEnumerator MonsterAction()
+    {
+        while (!isDie)
+        {
+            yield return ws;
+        }
     }
 
     IEnumerator CheckMonsterState()
@@ -51,7 +63,7 @@ public class MonsterController : MonoBehaviour
                 state = State.ATTACK;
             }
 
-            yield return new WaitForSeconds(0.3f);
+            yield return ws;
         }
     }
 
