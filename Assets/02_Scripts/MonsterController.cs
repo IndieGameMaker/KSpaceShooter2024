@@ -24,6 +24,7 @@ public class MonsterController : MonoBehaviour
     private readonly int hashTrace = Animator.StringToHash("IsTrace");
     private readonly int hashAttack = Animator.StringToHash("IsAttack");
     private readonly int hashHit = Animator.StringToHash("Hit");
+    private readonly int hashDie = Animator.StringToHash("Die");
 
     // Monster Health
     private int hp = 100;
@@ -69,7 +70,7 @@ public class MonsterController : MonoBehaviour
                     break;
 
                 case State.DIE:
-
+                    anim.SetTrigger(hashDie);
                     break;
             }
 
@@ -111,7 +112,7 @@ public class MonsterController : MonoBehaviour
             Destroy(coll.gameObject);
             anim.SetTrigger(hashHit);
 
-            hp -= 10; // hp = hp - 10;
+            hp -= 20; // hp = hp - 10;
             // 몬스터 사망
             if (hp <= 0)
             {
