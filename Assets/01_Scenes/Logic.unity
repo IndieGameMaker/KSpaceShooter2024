@@ -2377,6 +2377,7 @@ MonoBehaviour:
   state: 0
   attackDist: 2
   traceDist: 10
+  isDie: 0
 --- !u!1001 &1814923520
 PrefabInstance:
   m_ObjectHideFlags: 0
