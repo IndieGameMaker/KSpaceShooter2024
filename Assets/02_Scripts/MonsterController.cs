@@ -38,6 +38,24 @@ public class MonsterController : MonoBehaviour
     {
         while (!isDie)
         {
+            switch (state)
+            {
+                case State.IDLE:
+                    Debug.Log("IDLE");
+                    break;
+
+                case State.TRACE:
+                    Debug.Log("추적 상태");
+                    break;
+
+                case State.ATTACK:
+                    Debug.Log("공격 상태");
+                    break;
+
+                case State.DIE:
+                    break;
+            }
+
             yield return ws;
         }
     }
