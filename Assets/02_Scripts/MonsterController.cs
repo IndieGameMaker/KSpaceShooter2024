@@ -31,7 +31,7 @@ public class MonsterController : MonoBehaviour
         }
 
         StartCoroutine(CheckMonsterState());
-        //StartCoroutine("CheckMonsterState");
+        StartCoroutine(MonsterAction());
     }
 
     IEnumerator MonsterAction()
