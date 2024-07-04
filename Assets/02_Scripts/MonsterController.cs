@@ -44,11 +44,12 @@ public class MonsterController : MonoBehaviour
             switch (state)
             {
                 case State.IDLE:
-                    Debug.Log("IDLE");
+                    agent.isStopped = true;
                     break;
 
                 case State.TRACE:
-                    Debug.Log("추적 상태");
+                    agent.SetDestination(playerTr.position);
+                    agent.isStopped = false;
                     break;
 
                 case State.ATTACK:
