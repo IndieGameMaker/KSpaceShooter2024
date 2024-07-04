@@ -23,6 +23,7 @@ public class MonsterController : MonoBehaviour
 
     private readonly int hashTrace = Animator.StringToHash("IsTrace");
     private readonly int hashAttack = Animator.StringToHash("IsAttack");
+    private readonly int hashHit = Animator.StringToHash("Hit");
 
     void Start()
     {
@@ -94,6 +95,15 @@ public class MonsterController : MonoBehaviour
             }
 
             yield return ws;
+        }
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("BULLET"))
+        {
+            Destroy(coll.gameObject);
+            anim.SetTrigger(hashHit);
         }
     }
 
