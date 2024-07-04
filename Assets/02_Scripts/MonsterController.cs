@@ -71,6 +71,9 @@ public class MonsterController : MonoBehaviour
 
                 case State.DIE:
                     anim.SetTrigger(hashDie);
+                    agent.isStopped = true;
+                    GetComponent<CapsuleCollider>().enabled = false;
+                    isDie = true;
                     break;
             }
 
