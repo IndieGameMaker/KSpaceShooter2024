@@ -15,10 +15,13 @@ public class MonsterController : MonoBehaviour
     private Transform monsterTr;
     private Transform playerTr;
     private NavMeshAgent agent;
+    private Animator anim;
 
     private WaitForSeconds ws;
 
     public bool isDie = false;
+
+    private readonly int hashTrace = Animator.StringToHash("IsTrace");
 
     void Start()
     {
@@ -27,6 +30,7 @@ public class MonsterController : MonoBehaviour
         monsterTr = GetComponent<Transform>(); // monsterTr = transform;
         playerTr = GameObject.FindGameObjectWithTag("PLAYER")?.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
 
         if (playerTr == null)
         {
@@ -45,11 +49,13 @@ public class MonsterController : MonoBehaviour
             {
                 case State.IDLE:
                     agent.isStopped = true;
+                    anim.SetBool(hashTrace, false);
                     break;
 
                 case State.TRACE:
                     agent.SetDestination(playerTr.position);
                     agent.isStopped = false;
+                    anim.SetBool(hashTrace, true);
                     break;
 
                 case State.ATTACK:
