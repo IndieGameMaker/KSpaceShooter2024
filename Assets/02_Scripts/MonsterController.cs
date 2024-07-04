@@ -22,6 +22,7 @@ public class MonsterController : MonoBehaviour
     public bool isDie = false;
 
     private readonly int hashTrace = Animator.StringToHash("IsTrace");
+    private readonly int hashAttack = Animator.StringToHash("IsAttack");
 
     void Start()
     {
@@ -55,11 +56,12 @@ public class MonsterController : MonoBehaviour
                 case State.TRACE:
                     agent.SetDestination(playerTr.position);
                     agent.isStopped = false;
+                    anim.SetBool(hashAttack, false);
                     anim.SetBool(hashTrace, true);
                     break;
 
                 case State.ATTACK:
-                    Debug.Log("공격 상태");
+                    anim.SetBool(hashAttack, true);
                     break;
 
                 case State.DIE:
