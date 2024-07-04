@@ -38,17 +38,17 @@ public class MonsterController : MonoBehaviour
 
             state = State.IDLE;
 
-            // 공격 사정거리 이내일 경우
-            if (dist <= attackDist)
-            {
-                state = State.ATTACK;
-            }
             // 추적 사정거리 이내일 경우
             if (dist <= traceDist)
             {
                 state = State.TRACE;
             }
 
+            // 공격 사정거리 이내일 경우
+            if (dist <= attackDist)
+            {
+                state = State.ATTACK;
+            }
 
             yield return new WaitForSeconds(0.3f);
         }
