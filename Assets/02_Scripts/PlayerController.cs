@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,8 +27,10 @@ public class PlayerController : MonoBehaviour
     private int hashForward = Animator.StringToHash("forward");
     private int hashStrafe = Animator.StringToHash("strafe");
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(0.2f);
+
         animator = this.gameObject.GetComponent<Animator>();
 
         Debug.Log(hashForward);
