@@ -25,6 +25,9 @@ public class MonsterController : MonoBehaviour
     private readonly int hashAttack = Animator.StringToHash("IsAttack");
     private readonly int hashHit = Animator.StringToHash("Hit");
 
+    // Monster Health
+    private int hp = 100;
+
     void Start()
     {
         ws = new WaitForSeconds(0.3f);
@@ -66,6 +69,7 @@ public class MonsterController : MonoBehaviour
                     break;
 
                 case State.DIE:
+
                     break;
             }
 
@@ -77,6 +81,8 @@ public class MonsterController : MonoBehaviour
     {
         while (isDie == false)
         {
+            if (state == State.DIE) yield break;
+
             //float dist = Vector3.Distance(monsterTr.position, playerTr.position);
             float dist = (monsterTr.position - playerTr.position).sqrMagnitude;
 
@@ -104,6 +110,13 @@ public class MonsterController : MonoBehaviour
         {
             Destroy(coll.gameObject);
             anim.SetTrigger(hashHit);
+
+            hp -= 10; // hp = hp - 10;
+            // 몬스터 사망
+            if (hp <= 0)
+            {
+                state = State.DIE;
+            }
         }
     }
 
