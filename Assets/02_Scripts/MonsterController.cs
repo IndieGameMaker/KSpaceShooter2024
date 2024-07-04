@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MonsterController : MonoBehaviour
 
     private Transform monsterTr;
     private Transform playerTr;
+    private NavMeshAgent agent;
 
     private WaitForSeconds ws;
 
@@ -24,6 +26,7 @@ public class MonsterController : MonoBehaviour
 
         monsterTr = GetComponent<Transform>(); // monsterTr = transform;
         playerTr = GameObject.FindGameObjectWithTag("PLAYER")?.GetComponent<Transform>();
+        agent = GetComponent<NavMeshAgent>();
 
         if (playerTr == null)
         {
