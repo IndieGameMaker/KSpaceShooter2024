@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -63,6 +64,15 @@ public class PlayerController : MonoBehaviour
         transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * r);
     }
+
+    void OnTriggerEnter(Collider coll)
+    {
+        if (coll.CompareTag("PUNCH"))
+        {
+            Debug.Log(coll.gameObject.name);
+        }
+    }
+
 }
 
 
