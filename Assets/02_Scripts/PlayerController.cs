@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     private int hashStrafe = Animator.StringToHash("strafe");
 
     private bool isStarted = false;
+
+    [SerializeField] private Image hpBar;
 
     public int initHp = 100;
     public int currHp = 100;
@@ -78,6 +80,9 @@ public class PlayerController : MonoBehaviour
         if (currHp > 0 && coll.CompareTag("PUNCH"))
         {
             currHp -= 10;
+
+            hpBar.fillAmount = (float)currHp / (float)initHp;
+
             if (currHp <= 0)
             {
                 // 게임 매니저 접금
