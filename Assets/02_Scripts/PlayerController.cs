@@ -88,16 +88,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayerDie()
-    {
-        // 스테이지에 있는 모든 몬스터를 추출
-        GameObject[] monsters = GameObject.FindGameObjectsWithTag("MONSTER");
-        foreach (var monster in monsters)
-        {
-            //monster.SendMessage("YouWin", SendMessageOptions.DontRequireReceiver);
-            monster.GetComponent<MonsterController>().YouWin();
-        }
-    }
+    // private void PlayerDie()
+    // {
+    //     // 스테이지에 있는 모든 몬스터를 추출
+    //     GameObject[] monsters = GameObject.FindGameObjectsWithTag("MONSTER");
+    //     foreach (var monster in monsters)
+    //     {
+    //         //monster.SendMessage("YouWin", SendMessageOptions.DontRequireReceiver);
+    //         monster.GetComponent<MonsterController>().YouWin();
+    //     }
+    // }
 }
 
 

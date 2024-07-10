@@ -29,6 +29,19 @@ public class MonsterController : MonoBehaviour
     // Monster Health
     private int hp = 100;
 
+    void OnEnable()
+    {
+        // 이벤트 연결, 수신
+        PlayerController.OnPlayerDie += this.YouWin;
+    }
+
+    void OnDisable()
+    {
+        // 이벤트 수신 해지
+        PlayerController.OnPlayerDie -= this.YouWin;
+    }
+
+
     void Start()
     {
         ws = new WaitForSeconds(0.3f);
