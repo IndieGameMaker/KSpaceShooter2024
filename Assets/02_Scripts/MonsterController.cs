@@ -124,4 +124,10 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    public void YouWin()
+    {
+        anim.SetTrigger("PlayerDie");
+        StopAllCoroutines();
+        agent.isStopped = true;
+    }
 }
