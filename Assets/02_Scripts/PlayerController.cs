@@ -80,6 +80,11 @@ public class PlayerController : MonoBehaviour
             currHp -= 10;
             if (currHp <= 0)
             {
+                // 게임 매니저 접금
+                GameManager.instance.IsGameOver = true;
+
+                //GameObject.Find("GameManager").GetComponent<GameManager>().IsGameOver = true;
+
                 // 이벤트를 발생(호출) Raise
                 OnPlayerDie();
 

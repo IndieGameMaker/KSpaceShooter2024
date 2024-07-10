@@ -30,6 +30,8 @@ public class WeaponController : MonoBehaviour
 
     void Update()
     {
+        Debug.DrawRay(firePos.position, firePos.forward * 10.0f, Color.green);
+
         if (Input.GetMouseButtonDown(0))
         {
             Fire();
@@ -75,8 +77,10 @@ public class WeaponController : MonoBehaviour
 
     private void Fire()
     {
+
         // 총알을 동적으로 생성
-        Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+        // Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+
         // 진동 발생
         impulseSource.GenerateImpulse();
     }

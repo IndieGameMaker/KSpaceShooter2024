@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // 싱글턴 인스턴스 선언
+    public static GameManager instance = null;
+
     [SerializeField] private GameObject monsterPrefab;
     [SerializeField] private List<Transform> points = new List<Transform>();
 
@@ -25,9 +28,27 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void Awake()
+    {
+        // 간단한 사용방법 instance = this;
+
+        // instance 변수가 할당되지 않았을 때
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        // 다른 씬으로 이동했을 때에도 삭제하지 않고 유지함
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void OnEnable()
     {
-        PlayerController.OnPlayerDie += () => IsGameOver = true;
+        //PlayerController.OnPlayerDie += () => IsGameOver = true;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
