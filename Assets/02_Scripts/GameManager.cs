@@ -7,11 +7,35 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject monsterPrefab;
     [SerializeField] private List<Transform> points = new List<Transform>();
 
-    public bool isGameOver = false;
+    private bool isGameOver = false;
+
+    // 프로퍼티 정의
+    public bool IsGameOver
+    {
+        get { return isGameOver; }
+        set
+        {
+            isGameOver = value;
+            if (isGameOver)
+            {
+                // CancelInvoke(nameof(CreateMonster));
+                StopCoroutine(CreateMonsters());
+            }
+        }
+
+    }
+
+    void OnEnable()
+    {
+        PlayerController.OnPlayerDie += () => IsGameOver = true;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //getter => bool aaa = GameManager.IsGameOver;
+        //setter => GameManager.IsGameOver = true;
+
         GameObject.Find("SpawnPointGroup")?.GetComponentsInChildren<Transform>(points);
         StartCoroutine(CreateMonsters());
         //InvokeRepeating(nameof(CreateMonsters), 2.0f, 3.0f);
