@@ -52,5 +52,7 @@ public class Barrel : MonoBehaviour
 
         // Play Explosion SFX
         audio.PlayOneShot(barrelDataSO.expAudioClip, 0.9f);
+        // Raise Impulse
+        impulseSource.GenerateImpulse(UnityEngine.Random.Range(1.0f, 2.0f));
     }
 }
