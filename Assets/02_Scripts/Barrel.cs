@@ -3,7 +3,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Barrel : MonoBehaviour
+public class Barrel : MonoBehaviour, IDamagable
 {
     // [SerializeField] private GameObject expEffect;
     // [SerializeField] private Texture[] textures;
@@ -54,5 +54,13 @@ public class Barrel : MonoBehaviour
         audio.PlayOneShot(barrelDataSO.expAudioClip, 0.9f);
         // Raise Impulse
         impulseSource.GenerateImpulse(UnityEngine.Random.Range(1.0f, 2.0f));
+    }
+
+    public void Damaged()
+    {
+        if (++hitCount == 3)
+        {
+            ExpBarrel();
+        }
     }
 }
