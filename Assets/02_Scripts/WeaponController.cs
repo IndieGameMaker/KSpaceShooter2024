@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Collections;
 using UnityEngine;
+using Unity.Cinemachine;
 using Random = UnityEngine.Random;
 
 public class WeaponController : MonoBehaviour
@@ -12,11 +13,13 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private MeshRenderer muzzleFlash;
 
     private new AudioSource audio;
+    private CinemachineImpulseSource impulseSource;
     private Light fireLight;
 
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         muzzleFlash = firePos.GetComponentInChildren<MeshRenderer>();
         muzzleFlash.enabled = false;
 
@@ -74,5 +77,7 @@ public class WeaponController : MonoBehaviour
     {
         // 총알을 동적으로 생성
         Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+        // 진동 발생
+        impulseSource.GenerateImpulse();
     }
 }
