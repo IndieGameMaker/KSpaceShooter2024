@@ -24,7 +24,8 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Logic");
+        SceneManager.LoadScene("Level01");
+        SceneManager.LoadScene("Logic", LoadSceneMode.Additive);
     }
 
 }
