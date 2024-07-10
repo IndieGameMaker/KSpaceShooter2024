@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
     public int initHp = 100;
     public int currHp = 100;
 
+    // 델리게이트 (Delegate : 대리자)
+    public delegate void PlayerDieHandler();
+
+    // 이벤트 
+    public static event PlayerDieHandler OnPlayerDie;
 
     IEnumerator Start()
     {
@@ -75,7 +80,10 @@ public class PlayerController : MonoBehaviour
             currHp -= 10;
             if (currHp <= 0)
             {
-                PlayerDie();
+                // 이벤트를 발생(호출) Raise
+                OnPlayerDie();
+
+                //PlayerDie();
             }
         }
     }
