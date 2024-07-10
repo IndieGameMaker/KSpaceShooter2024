@@ -86,7 +86,9 @@ public class MonsterController : MonoBehaviour, IDamagable
                     anim.SetTrigger(hashDie);
                     agent.isStopped = true;
                     GetComponent<CapsuleCollider>().enabled = false;
+                    GameManager.instance.Score = 50;
                     isDie = true;
+
                     break;
             }
 
