@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MonsterController : MonoBehaviour
+public class MonsterController : MonoBehaviour, IDamagable
 {
     public enum State { IDLE, TRACE, ATTACK, DIE };
 
@@ -143,5 +143,17 @@ public class MonsterController : MonoBehaviour
         anim.SetTrigger("PlayerDie");
         StopAllCoroutines();
         agent.isStopped = true;
+    }
+
+    public void Damaged()
+    {
+        anim.SetTrigger(hashHit);
+
+        hp -= 20; // hp = hp - 10;
+                  // 몬스터 사망
+        if (hp <= 0)
+        {
+            state = State.DIE;
+        }
     }
 }
