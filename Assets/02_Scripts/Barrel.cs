@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -14,11 +15,13 @@ public class Barrel : MonoBehaviour
     private int hitCount;
     private new MeshRenderer renderer;
     private new AudioSource audio;
+    private CinemachineImpulseSource impulseSource;
 
     void Start()
     {
         renderer = GetComponentInChildren<MeshRenderer>();
         audio = GetComponent<AudioSource>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
 
         int idx = UnityEngine.Random.Range(0, barrelDataSO.textures.Length); // 0, 1, 2
         renderer.material.mainTexture = barrelDataSO.textures[idx];
