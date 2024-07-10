@@ -87,7 +87,8 @@ public class WeaponController : MonoBehaviour
 
         if (isHit)
         {
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
+            hit.collider.GetComponent<IDamagable>().Damaged();
         }
         // 총알을 동적으로 생성
         // Instantiate(bulletPrefab, firePos.position, firePos.rotation);
