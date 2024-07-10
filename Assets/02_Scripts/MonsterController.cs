@@ -126,6 +126,7 @@ public class MonsterController : MonoBehaviour
 
     public void YouWin()
     {
+        anim.SetFloat("DanceSpeed", UnityEngine.Random.Range(0.8f, 1.5f));
         anim.SetTrigger("PlayerDie");
         StopAllCoroutines();
         agent.isStopped = true;
