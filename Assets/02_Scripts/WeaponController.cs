@@ -77,7 +77,18 @@ public class WeaponController : MonoBehaviour
 
     private void Fire()
     {
+        // Raycasting
+        bool isHit = Physics.Raycast(
+                                    firePos.position,   // 발사 원점
+                                    firePos.forward,    // 방향
+                                    out RaycastHit hit, // 결괏값
+                                    10.0f,              // 광선의 거리
+                                    1 << 9 | 1 << 10);  // 대상 레이어
 
+        if (isHit)
+        {
+            Debug.Log(hit.collider.name);
+        }
         // 총알을 동적으로 생성
         // Instantiate(bulletPrefab, firePos.position, firePos.rotation);
 
