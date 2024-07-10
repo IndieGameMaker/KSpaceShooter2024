@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +11,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject monsterPrefab;
     [SerializeField] private List<Transform> points = new List<Transform>();
+    [SerializeField] private TMP_Text scoreText;
+
+    private int score;
+    public int Score
+    {
+        set
+        {
+            score += value;
+            scoreText.text = $"score : <color=#00ff00>{score}</color>";
+        }
+    }
 
     private bool isGameOver = false;
 
