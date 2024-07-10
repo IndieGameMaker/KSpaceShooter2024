@@ -3715,6 +3715,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3dafa8f9c534893a8487d0602d6191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterPrefab: {fileID: 3480526204453281144, guid: 2f0af1627d5c7423ab0d7a22edddf8fe, type: 3}
+  points: []
 --- !u!4 &1880908070
 Transform:
   m_ObjectHideFlags: 0
